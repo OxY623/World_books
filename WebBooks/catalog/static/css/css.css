@@ -1,3 +1,9 @@
+body, .container {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
 .sidebar-nav {
     margin-top: 20px;
     padding: 0;
@@ -12,3 +18,8 @@
     ul {
       list-style-type: disc;
     }
+
+    * {
+  transform: scale(2);
+  transform-origin: top left;
+}

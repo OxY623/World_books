@@ -20,16 +20,22 @@ from django.conf import settings
 from django.urls import path, include
 from django.urls import re_path
 from catalog import views
-#from catalog import views
+
+# from catalog import views
 
 urlpatterns = [
     path('', views.index, name='index'),
     path('admin/', admin.site.urls),
     re_path(r'^books/$', views.BookListView.as_view(), name='books'),
-    re_path(r'^books/(?P<pk>\d+)$', views.BookDetailView.as_view(), name='book_detail'),
+    #re_path(r'^books/(?P<pk>\d+)$', views.BookDetailView.as_view(), name='book-detail'),
+    path('books/<int:pk>/', views.BookDetailView.as_view(), name='book-detail'),
+
     re_path(r'^authors/$', views.AuthorListView.as_view(), name='authors'),
 ]
-urlpatterns+= [
+urlpatterns += [
     path('accounts/', include('django.contrib.auth.urls')),
 ]
-urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += [
+    re_path(r'^mybooks/$', views.LoanedBooksByUserListView.as_view(), name='my-borrowed'),
+]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
