@@ -64,6 +64,8 @@
                 <li class="active"><a href="{% url 'index' %}">Главная страница</a></li>
                 <li class="active"><a href="{% url 'books' %}">Все книги</a></li>
                 <li class="active"><a href="{% url 'authors' %}">Все авторы</a></li>
+                <li class="active"><a href="{% url 'author_add' %}">Редактировать авторов</a></li>
+                <li class="active"><a href="{% url 'create_book' %}">Добавить книгу</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
